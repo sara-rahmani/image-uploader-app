@@ -23,7 +23,7 @@ app.use(express.urlencoded({extended :true}))
 app.use("/images",express.static("./images"))
 
 //app.use('/api/images', express.static('images'))
-app.use(express.static("dist"));
+app.use(express.static("build"));
 
 app.get("/api/images", async(req, res) => {
   const result = await getImages()
@@ -62,7 +62,7 @@ app.get('images/:imageName',async (req,res)=>{
 // After all other routes
 app.get('*', (req, res) => {
 //  res.sendFile('dist/index.html');
-  res.sendFile('dist/index.html', { root: '.' });
+  res.sendFile('build/index.html', { root: '.' });
 
 });
 const port = process.env.PORT || 8080
